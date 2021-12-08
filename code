@@ -2,6 +2,7 @@ from selenium import webdriver
 
 #path is where the chromedriver is on my local computer - so that needs to be changed for everyone
 #https://chromedriver.chromium.org/getting-started
+#if on mac and can't chromedriver: https://stackoverflow.com/questions/60362018/macos-catalinav-10-15-3-error-chromedriver-cannot-be-opened-because-the-de
 
 driver = webdriver.Chrome("/Users/serena/Downloads/chromedriver") 
 driver.get("https://au.finance.yahoo.com/")
