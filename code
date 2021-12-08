@@ -1,0 +1,5 @@
+from selenium import webdriver
+
+#" " path is where the chromedriver is on my local computer - so that needs to be changed for everyone
+driver = webdriver.Chrome("/Users/serena/Downloads/chromedriver") 
+driver.get("https://au.finance.yahoo.com/")
