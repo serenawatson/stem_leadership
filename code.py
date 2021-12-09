@@ -1,11 +1,9 @@
 ##### Imports #####
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 ##### Comments #####
 
@@ -18,25 +16,29 @@ import time
 
 ##### Code #####
 
-# Use chrome webdriver
-s = Service("C:\Program Files (x86)\Chrome Driver\chromedriver.exe")
-driver = webdriver.Chrome(service= s)
+#stonks list
+stocks = ["CBA.AX", "NAB.AX", "WBC.AX", "ANZ.AX"]
 
-# Get website
-driver.get("https://au.finance.yahoo.com/")
+#for each stonk
+for stock in stocks:
+    
+    # Use chrome webdriver
+    driver = webdriver.Chrome("/Users/serena/Downloads/chromedriver")
+    
+    # Get website
+    yahoo = driver.get("https://au.finance.yahoo.com/")
+    
+    # Find search bar and enter a text
+    search = driver.find_element_by_id('yfin-usr-qry')
+    search.send_keys("{0}".format(stock))
+    time.sleep(5)
+    pg = search.send_keys(Keys.RETURN)
+    time.sleep(7)
+    
+    #extract previous closing value
+    prev_close = driver.find_element_by_xpath("//*[@id='quote-header-info']/div[3]/div[1]/div/fin-streamer[1]").get_attribute("innerHTML")
+    
+    #print value
+    print(prev_close)
 
-# Find search bar and enter a text
-search = driver.find_element(By.NAME, "yfin-usr-qry")
-search.send_keys("CBA.AX")
-search.send_keys(Keys.RETURN)
-
-# Program waits 10 seconds before finding the element
-try:
-    main = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "quote-summary"))
-    )
-    print(main.text)
-finally:
-    time.sleep(3)
-    driver.quit()
 
