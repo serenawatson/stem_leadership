@@ -61,7 +61,7 @@ name = 'output.xlsx'
 wb = load_workbook(name)
 page = wb.active
 
-#appending new row with the list of data values:
+# appending new row with the list of data values for each stock
 for stock in data:
     page.append(stock)
 
