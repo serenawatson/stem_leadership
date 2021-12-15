@@ -95,9 +95,7 @@ for sheet, stock in zip_data:
     ws.append(stock) 
     n += 1
 
-wb.save(filename=name)
-
-# Creating line charts
+'''# Creating line charts
 sheets = wb.sheetnames
 for sheet in sheets:
     ws = wb[sheets[n]]
@@ -109,7 +107,7 @@ for sheet in sheets:
     chart.x_axis.title = " Dates "
     chart.y_axis.title = " Amount "
 
-    sheet.add_chart(chart, "F2")
+    sheet.add_chart(chart, "F2")'''
 
 wb.save(filename=name)
 
