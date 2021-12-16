@@ -1,2 +1,3 @@
-# cognizant
-stem leaders program
+# Stem Leaders Program
+
+Working with an issue brief from Cognizant
